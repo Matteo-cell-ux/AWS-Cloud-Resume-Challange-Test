@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Eventually by HTML5 UP</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+    </head>
+    <body class="is-preload">
+
+        <header id="header">
+                <h1>Matteo Sanna</h1>
+                <p>Engineering cloud solutions with automation in mind<br />
+                your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p>
+                
+                <p class="counter-number">Caricamento visite...</p>
+            </header>
+
+        <form id="signup-form" method="post" action="#">
+                <input type="email" name="email" id="email" placeholder="Email Address" />
+                <input type="submit" value="Sign Up" />
+            </form>
+
+        <footer id="footer">
+                <ul class="icons">
+                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled.</li><li>Credits: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </footer>
+
+        <script src="assets/js/main.js"></script>
+
+            <script>
+                const counter = document.querySelector(".counter-number");
+                async function updateCounter() {
+                    try {
+                        let response = await fetch("https://wwjcx7tyxrbjmbkf3vc3teo3mu0qrvhq.lambda-url.ca-central-1.on.aws/");
+                        let data = await response.json();
+                        counter.innerHTML = `Views: ${data}`;
+                    } catch (error) {
+                        console.error("Errore nel recupero delle visite:", error);
+                        counter.innerHTML = "Visite: N/A";
+                    }
+                }
+
+                updateCounter();
+            </script>
+
+    </body>
+</html>
